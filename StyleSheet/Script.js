@@ -1,4 +1,27 @@
-// script.js
+
+
+ChangeText() {
+    var contentText;
+    var selectedITem = '';
+    var parm = document.getElementById("mySelection");
+    selectedITem = parm.options[parm.selectedIndex].text;
+    if (selectedITem == 'John Doe"')
+        contentText = '<a href="#">john.doe@example.com</a>'
+    else if (selectedITem == 'Jane Smith')
+        contentText = '<a href="#">jane.smith@example.com</a>'
+    else if (selectedITem == 'Alice Johnson')
+        contentText = '<a href="#">alice.johnson@example.com</a>'
+    else if (selectedITem == 'Bob Brown')
+        contentText = '<a href="#">bob.brown@example.com</a>'
+    else if (selectedITem == 'Emily Davis')
+        contentText = '<a href="#">emily.davis@example.com</a>'
+
+
+    str = contentText;
+    $("#test").html(str);
+
+
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('contactSearch');
