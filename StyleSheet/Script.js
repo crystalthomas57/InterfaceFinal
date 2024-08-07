@@ -1,6 +1,6 @@
 
 
-ChangeText() {
+.ChangeText() {
     var contentText;
     var selectedITem = '';
     var parm = document.getElementById("mySelection");
