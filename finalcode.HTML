@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Hub</title>
+    <link rel="stylesheet" href="StyleSheet/styles.css" href="Script.js">
+    <meta charset="UTF-8">
+  
+   
+</head>
+<body style="background-color: rgb(10, 128, 164);">
+
+    <div>
+        <header>
+            <center>
+            <h1>Communication Hub</h1>
+            <center/>
+        </header>
+        
+        <aside id="sidebar">
+            <div id="mailboxes">
+                <h2>Mailboxes</h2>
+                <input type="text" id="searchcontainer" placeholder="Search messages, contacts..." style="width: 20%;">
+                <ul id="mailboxes-list">
+                    <li>
+                        <span class="mailbox-name"><a href="https://login.yahoo.com" target="_blank">Yahoo Mail</a></span>
+                        <span class="mailbox-count">5 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://accounts.google.com" target="_blank">Gmail</a></span>
+                        <span class="mailbox-count">8 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://login.live.com" target="_blank">Outlook</a></span>
+                        <span class="mailbox-count">3 unread</span>
+                    </li>
+                    <li>
+                        
+                        <span class="mailbox-name"><a href="https://www.icloud.com/mail/?&" target="_blank">Apple Mail</a></span>
+                        <span class="mailbox-count">1 unread</span>
+                    </li>
+                </ul>
+            </div>
+            <div  id="contacts">
+                <h2>Contacts</h2>
+                <input type="text" id="contactSearch" placeholder="Search contacts..." style="width:20%">
+                <label for = "Contact List">Select Contact </label>
+                <select name="Contact Info" id="contacts">     <option class="contact-name">John Doe"</option>
+                    <option class="contact-name">Jane Smith</option>
+                    <option class="contact-name">Alice Johnson</option>
+                    <option class="contact-name">Bob Brown</option>
+                    <option class="contact-name">Emily Davis</option>
+                </select>
+                <!-- <ul id="contacts-list">
+
+                    <li>
+                        <span class="contact-name">John Doe</span>
+                        <span class="contact-email">john.doe@example.com</span>
+                    </li>
+                    <li>
+                        <span class="contact-name">Jane Smith</span>
+                        <span class="contact-email">jane.smith@example.com</span>
+                    </li>
+                    <li>
+                        <span class="contact-name">Alice Johnson</span>
+                        <span class="contact-email">alice.johnson@example.com</span>
+                    </li>
+                    <li>
+                        <span class="contact-name">Bob Brown</span>
+                        <span class="contact-email">bob.brown@example.com</span>
+                    </li>
+                    <li>
+                        <span class="contact-name">Emily Davis</span>
+                        <span class="contact-email">emily.davis@example.com</span>
+                    </li>
+                </ul>
+            </div>
+        </aside> -->
+
+        <main id="main-content">
+            <div id="messages">
+                <h2>Messages</h2>
+                <div id="messageList">  <!-- Messages will be populated here -->
+                  
+                </div>
+            </div>
+            <div id="messageDetail">
+                <!-- Detailed view of selected message or conversation will be here -->
+            </div>
+        </main>
+
+        <footer>
+    <button class="ReportPhish" onclick="redirectTo404()">Report Phishing</button>
+
+    <script>
+        // Function to redirect to a 404 error page
+        function redirectTo404() {
+            window.location.href = "/404.html";
+        }
+    </script>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
