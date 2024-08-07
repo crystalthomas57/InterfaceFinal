@@ -16,10 +16,9 @@
 <body style="background-color: rgb(151, 206, 222);">
 
     <div>
-        <header> 
+        <header>
             <center>
                 <h1 class="display-3">Communication Hub</h1>
-                <!-- <h1>Communication Hub</h1> -->
                 <center />
         </header>
 
@@ -52,13 +51,13 @@
             </div>
             <div class="dropdown" id="dropdown-content">
                 <h2>Contacts</h2>
-                
+
                 <input type="text" placeholder="add contacts..." style="width:20%">
                 <br>
 
                 <label for="Contact List">Select recent Contact </label>
                 </br>
-                
+
                 <div class="dropdown">
                     <select id="contact-info">
                         <option value="">Select Name</option>
@@ -69,16 +68,16 @@
                         <option value="emily@example.com">Emily Davis</option>
                     </select>
                 </div>
-                
+
                 <!-- Email display section -->
                 <div id="email-display"></div>
-                
+
                 <script>
                     // Inline JavaScript to handle dropdown change event and display email
-                    document.getElementById('contact-info').addEventListener('change', function() {
+                    document.getElementById('contact-info').addEventListener('change', function () {
                         var email = this.value;
                         var emailDisplay = document.getElementById('email-display');
-                        
+
                         if (email) {
                             emailDisplay.innerText = 'Email Address: ' + email;
                             emailDisplay.style.display = 'block'; // Show the email display section
@@ -87,50 +86,14 @@
                         }
                     });
                 </script>
-
-                <!-- <select id="mySelection" onchange="ChangeText();" style="width: 100%;">
-               
-                    <option disabled="disabled"   selected="selected">Select method</option>
-                         <option value="1">jane.smith@example.com</option>
-                         <option value="2">alice.johnson@example.com</option>
-                         <option value="3">bob.brown@example.com</option>
-                         <option value="4">emily.davis@example.com</option>
-                          </select> -->
-
-                <!-- <ul id="contacts-list">
-
-                    <li>
-                        <span class="contact-name">John Doe</span>
-                        <span class="contact-email">john.doe@example.com</span>
-                    </li>
-                    <li>
-                        <span class="contact-name">Jane Smith</span>
-                        <span class="contact-email">jane.smith@example.com</span>
-                    </li>
-                    <li>
-                        <span class="contact-name">Alice Johnson</span>
-                        <span class="contact-email">alice.johnson@example.com</span>
-                    </li>
-                    <li>
-                        <span class="contact-name">Bob Brown</span>
-                        <span class="contact-email">bob.brown@example.com</span>
-                    </li>
-                    <li>
-                        <span class="contact-name">Emily Davis</span>
-                        <span class="contact-email">emily.davis@example.com</span>
-                    </li>
-                </ul>
-            </div>
-        </aside> -->
-
                 <footer>
                     <h2>Messages</h2>
                     <button class="button" onclick="showInbox()"> Recent Messages</button>
                     <div id="messages-container">
                         <ul id="messages-list">
-                           
-                                <h3>Inbox</h3>
-                                <li>
+
+                            <h3>Inbox</h3>
+                            <li>
                                 <div class="message-info">
                                     <span class="message-sender">John Doe</span>
                                     <span class="message-subject">Meeting Tomorrow</span>
