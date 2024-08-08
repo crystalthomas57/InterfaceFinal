@@ -49,7 +49,41 @@
                     </li>
                 </ul>
             </div>
-            <div class="dropdown" id="dropdown-content">
+            <div class="dropdown" id="dropdown-content" style="font-family: Arial, sans-serif; display: inline-block; position: relative;">
+                <h2 style="margin-bottom: 10px; font-size: 18px;">Contacts</h2>
+        
+                <input type="text" id="add-contact" placeholder="Add contacts..." style="width: 60%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                <br>
+        
+                <label for="contact-info" style="font-size: 14px; margin-bottom: 5px; display: inline-block;">Select recent Contact:</label>
+                <br>
+        
+                <select id="contact-info" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                    <option value="">Select Name</option>
+                    <option value="john@example.com">John Doe</option>
+                    <option value="jane@example.com">Jane Smith</option>
+                    <option value="alice@example.com">Alice Johnson</option>
+                    <option value="bob@example.com">Bob Brown</option>
+                    <option value="emily@example.com">Emily Davis</option>
+                </select>
+            </div>
+        
+            <script>
+                document.getElementById('add-contact').addEventListener('input', function() {
+                    var input = this.value.trim();
+                    var select = document.getElementById('contact-info');
+        
+                    if (input && !Array.from(select.options).some(option => option.text === input)) {
+                        var newOption = document.createElement('option');
+                        newOption.textContent = input;
+                        newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
+                        select.appendChild(newOption);
+                        this.value = ''; // Clear input field after adding
+                    }
+                });
+            </script>
+
+            <!-- <div class="dropdown" id="dropdown-content">
                 <h2>Contacts</h2>
 
                 <input type="text" placeholder="add contacts..." style="width:20%">
@@ -67,7 +101,7 @@
                         <option value="bob@example.com">Bob Brown</option>
                         <option value="emily@example.com">Emily Davis</option>
                     </select>
-                </div>
+                </div> -->
 
                 <!-- Email display section -->
                 <div id="email-display"></div>
