@@ -7,8 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+<body>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,37 +73,26 @@
             margin-top: 20px;
         }
     </style>
-</head>
 
-<body>
+    <div class="sidebar">
+        <a href="consolidatedindex.html">Dashboard</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="settings.html">Settings</a>
+    </div>
+
     <div class="container">
-        <!--added for contrast button -->
-        <header>
             <center>
+                <div>
                 <h1 class="display-3">Contacts</h1>
-                <!-- Toggle High Contrast Button -->
                 <button id="contrast-toggle" class="btn btn-secondary">Toggle High Contrast</button>
-            </center>
-        </header>
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <a href="consolidatedindex.html">Dashboard</a>
-            <a href="contacts.html">Contacts</a>
-            <a href="settings.html">Settings</a>
-        </div>
-
-        <!-- Contacts Content -->
-        <div class="content" id="contacts">
-            <div class="back-link">
-                <a href=" <div class="content">
-        <div class="back-link">
-            <a href="consolidatedindex.html">Back to Dashboard</a>
-        </div>">Back to Dashboard</a>
             </div>
+            </center>
+            <br>
             <div class="header">
                 <div class="search-bar">
                     <input type="text" class="form-control" placeholder="Search contacts by name, role, email...">
                 </div>
+                <br>
                 <div class="thread-conversations">
                     <strong>Thread Conversations</strong>
                 </div>
@@ -147,5 +139,4 @@
         </div>
     </div>
 </body>
-
 </html>
