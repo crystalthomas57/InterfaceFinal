@@ -53,7 +53,26 @@
                         <span class="mailbox-count">1 unread</span>
                     </li>
                 </ul>
-            </div>
+
+                   <!-- Text-to-Speech Button -->
+        <button onclick="speakText('2 new messages. Yahoo Mail, 5 unread. Gmail, 8 unread. Outlook, 3 unread. Apple Mail, 1 unread.')"
+        class="btn btn-secondary mt-3">Speak Mailboxes</button>
+
+ </div>
+
+ <script>
+    function speakText(text) {
+        // Check if the browser supports the Web Speech API
+        if ('speechSynthesis' in window) {
+            var speech = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(speech);
+        } else {
+            alert("Sorry, your browser doesn't support text to speech!");
+        }
+    }
+</script>
+</body>
+
         </div>
 
         <div class="content" id="dashboard">
@@ -61,8 +80,8 @@
                 <div class="filter">
                     <strong>Filter:</strong> Urgency, Importance
                 </div>
-                <div class="search-bar" label="search">
-                    <input type="text" class="form-control" id="filter"
+                <div class="search-bar">
+                    <input type="text" class="form-control"
                         placeholder="Search here for messages, threads, keywords...">
                 </div>
                 <div class="new-messages">
@@ -76,7 +95,6 @@
                 <input type="text" id="speech-to-text" class="form-control"
                     placeholder="Speech to text output will appear here...">
             </div>
-
 
             <div class="table-wrapper">
                 <h3>Inbox</h3>
@@ -134,7 +152,7 @@
                     </tbody>
                 </table>
             </div>
-            <div style="float:top:right">
+            <center>
                 <div class="contact-list">
                     <h3>Contact List</h3>
                     <input type="text" id="add-contact" placeholder="Add contacts..." style="width:40%">
@@ -151,94 +169,95 @@
                         </select>
                         <div id="email-display"></div>
                     </div>
-                </div>
 
-                <div class="accessibility">
-                    <a href="#">Accessibility Options</a>
-                </div>
+            </center>
+            <div class="accessibility">
+                <a href="#">Accessibility Options</a>
             </div>
         </div>
+    </div>
 
-        <script>
-            function showInbox() {
-                var inbox = document.getElementById('messages-list');
-                if (inbox.style.display === 'none' || inbox.style.display === '') {
-                    inbox.style.display = 'block';
-                } else {
-                    inbox.style.display = 'none';
-                }
+    <script>
+        function showInbox() {
+            var inbox = document.getElementById('messages-list');
+            if (inbox.style.display === 'none' || inbox.style.display === '') {
+                inbox.style.display = 'block';
+            } else {
+                inbox.style.display = 'none';
             }
+        }
 
 
-            document.getElementById('add-contact').addEventListener('input', function () {
-                var input = this.value.trim();
-                var select = document.getElementById('contact-info');
+        document.getElementById('add-contact').addEventListener('input', function () {
+            var input = this.value.trim();
+            var select = document.getElementById('contact-info');
 
-                if (input && !Array.from(select.options).some(option => option.text === input)) {
-                    var newOption = document.createElement('option');
-                    newOption.textContent = input;
-                    newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
-                    select.appendChild(newOption);
-                    this.value = ''; // Clear input field after adding
-                }
-            });
-
-
-            document.getElementById('contact-info').addEventListener('change', function () {
-                var email = this.value;
-                var emailDisplay = document.getElementById('email-display');
-
-                if (email) {
-                    emailDisplay.innerText = 'Email Address: ' + email;
-                    emailDisplay.style.display = 'block';
-                } else {
-                    emailDisplay.style.display = 'none';
-                }
-            });
-
-            function redirectTo404() {
-                window.location.href = "/404.html";
+            if (input && !Array.from(select.options).some(option => option.text === input)) {
+                var newOption = document.createElement('option');
+                newOption.textContent = input;
+                newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
+                select.appendChild(newOption);
+                this.value = ''; // Clear input field after adding
             }
+        });
 
 
-            document.addEventListener('DOMContentLoaded', () => {
-                const startRecordBtn = document.getElementById('start-record-btn');
-                const speechToText = document.getElementById('speech-to-text');
+        document.getElementById('contact-info').addEventListener('change', function () {
+            var email = this.value;
+            var emailDisplay = document.getElementById('email-display');
+
+            if (email) {
+                emailDisplay.innerText = 'Email Address: ' + email;
+                emailDisplay.style.display = 'block';
+            } else {
+                emailDisplay.style.display = 'none';
+            }
+        });
+
+        function redirectTo404() {
+            window.location.href = "/404.html";
+        }
+
+        // Speech-to-Text Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const startRecordBtn = document.getElementById('start-record-btn');
+            const speechToText = document.getElementById('speech-to-text');
 
 
-                if ('webkitSpeechRecognition' in window) {
-                    const recognition = new webkitSpeechRecognition();
-                    recognition.continuous = false;
-                    recognition.interimResults = false;
-                    recognition.lang = 'en-US';
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
 
 
-                    startRecordBtn.addEventListener('click', () => {
-                        recognition.start();
-                    });
+                startRecordBtn.addEventListener('click', () => {
+                    recognition.start();
+                });
 
 
-                    recognition.onresult = (event) => {
-                        const transcript = event.results[0][0].transcript;
-                        speechToText.value = transcript;
-                    };
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    speechToText.value = transcript;
+                };
 
 
-                    recognition.onerror = (event) => {
-                        console.error('Speech recognition error', event);
-                    };
+                recognition.onerror = (event) => {
+                    console.error('Speech recognition error', event);
+                };
 
 
-                    recognition.onend = () => {
-                        console.log('Speech recognition service connected');
-                    };
-                } else {
-                    console.warn('Speech recognition not supported in this browser');
-                    startRecordBtn.disabled = true;
-                    startRecordBtn.textContent = 'Speech recognition not supported';
-                }
-            });
-        </script>
+                recognition.onend = () => {
+                    console.log('Speech recognition service disconnected');
+                };
+            } else {
+                console.warn('Speech recognition not supported in this browser');
+                startRecordBtn.disabled = true;
+                startRecordBtn.textContent = 'Speech recognition not supported';
+            }
+        });
+
+    </script>
 
 </body>
 
