@@ -106,3 +106,16 @@ body {
 .contact-list {
     margin-top: 20px;
 }
+/* High Contrast Mode Styles */
+.high-contrast {
+    background-color: #000;
+    color: #fff;
+}
+.high-contrast a, .high-contrast a:hover {
+    color: #ff0;
+}
+.high-contrast .btn {
+    background-color: #fff;
+    color: #000;
+    border-color: #fff;
+}
