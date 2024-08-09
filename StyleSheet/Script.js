@@ -58,3 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var toggleButton = document.getElementById('contrast-toggle');
+    toggleButton.addEventListener('click', function() {
+        document.body.classList.toggle('high-contrast');
+    });
+});
