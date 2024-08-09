@@ -61,8 +61,8 @@
                 <div class="filter">
                     <strong>Filter:</strong> Urgency, Importance
                 </div>
-                <div class="search-bar">
-                    <input type="text" class="form-control"
+                <div class="search-bar" label="search">
+                    <input type="text" class="form-control" id="filter"
                         placeholder="Search here for messages, threads, keywords...">
                 </div>
                 <div class="new-messages">
@@ -70,12 +70,13 @@
                 </div>
             </div>
 
-             <!-- Speech-to-Text Section -->
-             <div class="speech-to-text">
+            <!-- Speech-to-Text Section -->
+            <div class="speech-to-text">
                 <button id="start-record-btn" class="btn btn-primary">Start Recording</button>
-                <input type="text" id="speech-to-text" class="form-control" placeholder="Speech to text output will appear here...">
+                <input type="text" id="speech-to-text" class="form-control"
+                    placeholder="Speech to text output will appear here...">
             </div>
- 
+
 
             <div class="table-wrapper">
                 <h3>Inbox</h3>
@@ -199,8 +200,7 @@
                 window.location.href = "/404.html";
             }
 
-    </script>
-        <script>
+
             document.addEventListener('DOMContentLoaded', () => {
                 const startRecordBtn = document.getElementById('start-record-btn');
                 const speechToText = document.getElementById('speech-to-text');
@@ -238,7 +238,6 @@
                     startRecordBtn.textContent = 'Speech recognition not supported';
                 }
             });
-
         </script>
 
 </body>
