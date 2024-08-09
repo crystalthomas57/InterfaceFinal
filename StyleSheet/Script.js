@@ -1,6 +1,6 @@
 
 
-.ChangeText() {
+ChangeText() {
     var contentText;
     var selectedITem = '';
     var parm = document.getElementById("mySelection");
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// script.js messaging
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const messages = document.querySelectorAll('#messages-list li');
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sender = message.querySelector('.message-sender').textContent;
             const subject = message.querySelector('.message-subject').textContent;
             alert(`Selected message:\nSender: ${sender}\nSubject: ${subject}`);
-            // Here you could load the full message content or perform other actions
+
         });
     });
 });

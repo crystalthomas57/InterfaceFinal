@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="styles.css" href="morestyles.css" href="Script.js">
+</head>
+
+<body style="background-color: rgb(151, 206, 222);">
+
+    <div>
+        <header>
+            <center>
+                <h1 class="display-3">Communication Hub</h1>
+                <button id="contrast-toggle" class="btn btn-secondary">Toggle High Contrast</button>
+                <center />
+        </header>
+
+        <aside id="sidebar">
+            <div id="mailboxes">
+                <h2>Mailboxes</h2>
+
+                <ul id="mailboxes-list">
+                    <li>
+                        <span class="mailbox-name"><a href="https://login.yahoo.com" target="_blank">Yahoo
+                                Mail</a></span>
+                        <span class="mailbox-count">5 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://accounts.google.com"
+                                target="_blank">Gmail</a></span>
+                        <span class="mailbox-count">8 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://login.live.com" target="_blank">Outlook</a></span>
+                        <span class="mailbox-count">3 unread</span>
+                    </li>
+                    <li>
+
+                        <span class="mailbox-name"><a href="https://www.icloud.com/mail/?&" target="_blank">Apple
+                                Mail</a></span>
+                        <span class="mailbox-count">1 unread</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="dropdown" id="dropdown-content"
+                style="font-family: Arial, sans-serif; display: inline-block; position: relative;">
+                <h2 style="margin-bottom: 10px; font-size: 18px;">Contacts</h2>
+
+                <input type="text" id="add-contact" placeholder="Add contacts..."
+                    style="width: 60%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                <br>
+
+                <label for="contact-info" style="font-size: 14px; margin-bottom: 5px; display: inline-block;">Select
+                    recent Contact:</label>
+                <br>
+
+                <select id="contact-info"
+                    style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                    <option value="">Select Name</option>
+                    <option value="john@example.com">John Doe</option>
+                    <option value="jane@example.com">Jane Smith</option>
+                    <option value="alice@example.com">Alice Johnson</option>
+                    <option value="bob@example.com">Bob Brown</option>
+                    <option value="emily@example.com">Emily Davis</option>
+                </select>
+            </div>
+
+            <script>
+                document.getElementById('contact-info').addEventListener('change', function () {
+                    var email = this.value;
+                    var emailDisplay = document.getElementById('email-display');
+
+                    if (email) {
+                        emailDisplay.innerText = 'Email Address: ' + email;
+                        emailDisplay.style.display = 'block'; // Show the email display section
+                    } else {
+                        emailDisplay.style.display = 'none'; // Hide if no option is selected
+                    }
+                });
+            </script>
+
+            <script>
+                document.getElementById('add-contact').addEventListener('input', function () {
+                    var input = this.value.trim();
+                    var select = document.getElementById('contact-info');
+
+                    if (input && !Array.from(select.options).some(option => option.text === input)) {
+                        var newOption = document.createElement('option');
+                        newOption.textContent = input;
+                        newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
+                        select.appendChild(newOption);
+                        this.value = ''; // Clear input field after adding
+                    }
+                });
+            </script>
+            <div id="email-display"></div>
+            <footer>
+                <h2>Messages</h2>
+                <button class="button" onclick="showInbox()"> Recent Messages</button>
+                <div id="messages-container">
+                    <ul id="messages-list">
+
+                        <h3>Inbox</h3>
+                        <li>
+                            <div class="message-info">
+                                <span class="message-sender">John Doe</span>
+                                <span class="message-subject">Meeting Tomorrow</span>
+                            </div>
+                            <div class="message-snippet">
+                                <p>Don't forget about our meeting scheduled for tomorrow at 10 AM...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-info">
+                                <span class="message-sender">Jane Smith</span>
+                                <span class="message-subject">Project Update</span>
+                            </div>
+                            <div class="message-snippet">
+                                <p>Here's the latest update on the project. Please review the attached document...
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-info">
+                                <span class="message-sender">Alice Johnson</span>
+                                <span class="message-subject">Vacation Request</span>
+                            </div>
+                            <div class="message-snippet">
+                                <p>I would like to request vacation time from July 10th to July 20th...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-info">
+                                <span class="message-sender">Bob Brown</span>
+                                <span class="message-subject">Invoice</span>
+                            </div>
+                            <div class="message-snippet">
+                                <p>Your invoice for the recent services has been attached to this email...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="message-info">
+                                <span class="message-sender">Emily Davis</span>
+                                <span class="message-subject">Welcome Aboard</span>
+                            </div>
+                            <div class="message-snippet">
+                                <p>Welcome to the team! We're excited to have you on board. Here are some
+                                    resources...</p>
+                                <input type="text" id="searchcontainer" placeholder="Search messages..."
+                                    style="width: 20%;">
+                            </div>
+
+
+
+                            <script>
+                                function showInbox() {
+                                    var inbox = document.getElementById('messages-list');
+                                    if (inbox.style.display === 'none' || inbox.style.display === '') {
+                                        inbox.style.display = 'block';
+                                    } else {
+                                        inbox.style.display = 'none';
+                                    }
+                                }
+                            </script>
+                            <br>
+                            <div>
+                                <button> <a href="redirectTo404()" class="ReportPhish">Report Phishing</a> </button>
+                            </div>
+
+                            <script>
+                                function redirectTo404() {
+                                    window.location.href = "/404.html";
+                                }
+                            </script>
+            </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

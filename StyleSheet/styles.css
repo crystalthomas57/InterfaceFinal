@@ -1,5 +1,4 @@
-/* styles.css */
-
+/* styles.css for webpage design*/
 .mycontacts {
     p.double {border-style: double;}
 }
@@ -47,3 +46,63 @@ h2 {
     color: #555;
 }
 
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    float: left;
+    margin-right: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}
+
+.content {
+    margin-left: 220px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.table-wrapper {
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.accessibility {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.back-link {
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    margin-top: 20px;
+}
