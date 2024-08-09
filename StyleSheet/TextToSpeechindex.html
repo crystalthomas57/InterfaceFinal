@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" href="morestyles.css" href="Script.js">
+</head>
+
+<body style="background-color: rgb(151, 206, 222);">
+
+    <div>
+        <header>
+            <center>
+                <h1 class="display-3">Communication Hub</h1>
+                <button id="contrast-toggle" class="btn btn-secondary">Toggle High Contrast</button>
+            </center>
+        </header>
+
+</body>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="index.html">Dashboard</a>
+            <a href="contacts.html">Contacts</a>
+            <a href="settings.html">Settings</a>
+
+
+            <div id="mailboxes">
+                <h2>Mailboxes</h2>
+                <ul id="mailboxes-list">
+                    <li><span class="mailbox-name"><a href="https://login.yahoo.com" target="_blank"
+                                class="text-primary">Yahoo
+                                Mail</a></span> <span class="mailbox-count">5 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://accounts.google.com" target="_blank"
+                                class="text-primary">Gmail</a></span> <span class="mailbox-count">8 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://login.live.com" target="_blank"
+                                class="text-primary"> Outlook</a></span>
+                        <span class="mailbox-count">3 unread</span>
+                    </li>
+                    <li>
+                        <span class="mailbox-name"><a href="https://www.icloud.com/mail/?&" target="_blank"
+                                class="text-primary">Apple
+                                Mail</a></span>
+                        <span class="mailbox-count">1 unread</span>
+                    </li>
+                </ul>
+
+                   <!-- Text-to-Speech Button -->
+        <button onclick="speakText('2 new messages. Yahoo Mail, 5 unread. Gmail, 8 unread. Outlook, 3 unread. Apple Mail.')"
+        class="btn btn-secondary mt-3">Speak Mailboxes</button>
+
+ </div>
+
+ <script>
+    function speakText(text) {
+        // Check if the browser supports the Web Speech API
+        if ('speechSynthesis' in window) {
+            var speech = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(speech);
+        } else {
+            alert("Sorry, your browser doesn't support text to speech!");
+        }
+    }
+</script>
+</body>
+
+        </div>
+
+        <div class="content" id="dashboard">
+            <div class="header">
+                <div class="filter">
+                    <strong>Filter:</strong> Urgency, Importance
+                </div>
+                <div class="search-bar">
+                    <input type="text" class="form-control"
+                        placeholder="Search here for messages, threads, keywords...">
+                </div>
+                <div class="new-messages">
+                    <strong>2 new messages!</strong>
+                </div>
+            </div>
+
+            <!-- Speech-to-Text Section -->
+            <div class="speech-to-text">
+                <button id="start-record-btn" class="btn btn-primary">Start Recording</button>
+                <input type="text" id="speech-to-text" class="form-control"
+                    placeholder="Speech to text output will appear here...">
+            </div>
+
+            <div class="table-wrapper">
+                <h3>Inbox</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Message From</th>
+                            <th>Platform</th>
+                            <th>Subject</th>
+                            <th>Messages</th>
+                            <th>Phish/Urgent</th>
+                        </tr>
+                    </thead>
+                    <tbody id="messages-list">
+                        <tr>
+                            <td>Bob Smith</td>
+                            <td>LinkedIn</td>
+                            <td>Recruiter Contact</td>
+                            <td>Get in contact with a recruiter right...</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">!</button>
+                                <button class="btn btn-primary btn-sm">&#x1f4e3;</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lacy Jones</td>
+                            <td>Canvas</td>
+                            <td>Grade Release</td>
+                            <td>Your instructor released grades...</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">!</button>
+                                <button class="btn btn-primary btn-sm">&#x1f4e3;</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>LinkedIn</td>
+                            <td>Meeting Tomorrow</td>
+                            <td>Don't forget about our meeting scheduled for tomorrow at 10 AM...</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">!</button>
+                                <button class="btn btn-primary btn-sm">&#x1f4e3;</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>LinkedIn</td>
+                            <td>Project Update</td>
+                            <td>Here's the latest update on the project. Please review the attached document...</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">!</button>
+                                <button class="btn btn-primary btn-sm">&#x1f4e3;</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <center>
+                <div class="contact-list">
+                    <h3>Contact List</h3>
+                    <input type="text" id="add-contact" placeholder="Add contacts..." style="width:40%">
+                    <br>
+                    <label for="contact-info">Select recent Contact:</label>
+                    <br>
+                    <div class="dropdown">
+                        <select id="contact-info">
+                            <option value="">Select Name</option>
+                            <option value="jimjones@gmail.com">Jimmy Jones</option>
+                            <option value="kkobain@twu.edu">Kurt Kobain</option>
+                            <option value="cheron@work.com">Cady Heron</option>
+                            <option value="reginageorge@gmail.com">Regina George</option>
+                        </select>
+                        <div id="email-display"></div>
+                    </div>
+
+            </center>
+            <div class="accessibility">
+                <a href="#">Accessibility Options</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showInbox() {
+            var inbox = document.getElementById('messages-list');
+            if (inbox.style.display === 'none' || inbox.style.display === '') {
+                inbox.style.display = 'block';
+            } else {
+                inbox.style.display = 'none';
+            }
+        }
+
+
+        document.getElementById('add-contact').addEventListener('input', function () {
+            var input = this.value.trim();
+            var select = document.getElementById('contact-info');
+
+            if (input && !Array.from(select.options).some(option => option.text === input)) {
+                var newOption = document.createElement('option');
+                newOption.textContent = input;
+                newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
+                select.appendChild(newOption);
+                this.value = ''; // Clear input field after adding
+            }
+        });
+
+
+        document.getElementById('contact-info').addEventListener('change', function () {
+            var email = this.value;
+            var emailDisplay = document.getElementById('email-display');
+
+            if (email) {
+                emailDisplay.innerText = 'Email Address: ' + email;
+                emailDisplay.style.display = 'block';
+            } else {
+                emailDisplay.style.display = 'none';
+            }
+        });
+
+        function redirectTo404() {
+            window.location.href = "/404.html";
+        }
+
+        // Speech-to-Text Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const startRecordBtn = document.getElementById('start-record-btn');
+            const speechToText = document.getElementById('speech-to-text');
+
+
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+
+
+                startRecordBtn.addEventListener('click', () => {
+                    recognition.start();
+                });
+
+
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    speechToText.value = transcript;
+                };
+
+
+                recognition.onerror = (event) => {
+                    console.error('Speech recognition error', event);
+                };
+
+
+                recognition.onend = () => {
+                    console.log('Speech recognition service disconnected');
+                };
+            } else {
+                console.warn('Speech recognition not supported in this browser');
+                startRecordBtn.disabled = true;
+                startRecordBtn.textContent = 'Speech recognition not supported';
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
