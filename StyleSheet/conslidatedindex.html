@@ -70,12 +70,12 @@
                 </div>
             </div>
 
-            <!-- Speech-to-Text Section -->
-            <div class="speech-to-text">
+             <!-- Speech-to-Text Section -->
+             <div class="speech-to-text">
                 <button id="start-record-btn" class="btn btn-primary">Start Recording</button>
-                <input type="text" id="speech-to-text" class="form-control"
-                    placeholder="Speech to text output will appear here...">
+                <input type="text" id="speech-to-text" class="form-control" placeholder="Speech to text output will appear here...">
             </div>
+ 
 
             <div class="table-wrapper">
                 <h3>Inbox</h3>
@@ -133,7 +133,7 @@
                     </tbody>
                 </table>
             </div>
-            <center>
+            <div style="float:top:right">
                 <div class="contact-list">
                     <h3>Contact List</h3>
                     <input type="text" id="add-contact" placeholder="Add contacts..." style="width:40%">
@@ -150,95 +150,96 @@
                         </select>
                         <div id="email-display"></div>
                     </div>
+                </div>
 
-            </center>
-            <div class="accessibility">
-                <a href="#">Accessibility Options</a>
+                <div class="accessibility">
+                    <a href="#">Accessibility Options</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        function showInbox() {
-            var inbox = document.getElementById('messages-list');
-            if (inbox.style.display === 'none' || inbox.style.display === '') {
-                inbox.style.display = 'block';
-            } else {
-                inbox.style.display = 'none';
+        <script>
+            function showInbox() {
+                var inbox = document.getElementById('messages-list');
+                if (inbox.style.display === 'none' || inbox.style.display === '') {
+                    inbox.style.display = 'block';
+                } else {
+                    inbox.style.display = 'none';
+                }
             }
-        }
 
 
-        document.getElementById('add-contact').addEventListener('input', function () {
-            var input = this.value.trim();
-            var select = document.getElementById('contact-info');
+            document.getElementById('add-contact').addEventListener('input', function () {
+                var input = this.value.trim();
+                var select = document.getElementById('contact-info');
 
-            if (input && !Array.from(select.options).some(option => option.text === input)) {
-                var newOption = document.createElement('option');
-                newOption.textContent = input;
-                newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
-                select.appendChild(newOption);
-                this.value = ''; // Clear input field after adding
+                if (input && !Array.from(select.options).some(option => option.text === input)) {
+                    var newOption = document.createElement('option');
+                    newOption.textContent = input;
+                    newOption.value = input.toLowerCase().replace(/\s+/g, '-') + '@example.com';
+                    select.appendChild(newOption);
+                    this.value = ''; // Clear input field after adding
+                }
+            });
+
+
+            document.getElementById('contact-info').addEventListener('change', function () {
+                var email = this.value;
+                var emailDisplay = document.getElementById('email-display');
+
+                if (email) {
+                    emailDisplay.innerText = 'Email Address: ' + email;
+                    emailDisplay.style.display = 'block';
+                } else {
+                    emailDisplay.style.display = 'none';
+                }
+            });
+
+            function redirectTo404() {
+                window.location.href = "/404.html";
             }
-        });
-
-
-        document.getElementById('contact-info').addEventListener('change', function () {
-            var email = this.value;
-            var emailDisplay = document.getElementById('email-display');
-
-            if (email) {
-                emailDisplay.innerText = 'Email Address: ' + email;
-                emailDisplay.style.display = 'block';
-            } else {
-                emailDisplay.style.display = 'none';
-            }
-        });
-
-        function redirectTo404() {
-            window.location.href = "/404.html";
-        }
-
-        // Speech-to-Text Functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const startRecordBtn = document.getElementById('start-record-btn');
-            const speechToText = document.getElementById('speech-to-text');
-
-
-            if ('webkitSpeechRecognition' in window) {
-                const recognition = new webkitSpeechRecognition();
-                recognition.continuous = false;
-                recognition.interimResults = false;
-                recognition.lang = 'en-US';
-
-
-                startRecordBtn.addEventListener('click', () => {
-                    recognition.start();
-                });
-
-
-                recognition.onresult = (event) => {
-                    const transcript = event.results[0][0].transcript;
-                    speechToText.value = transcript;
-                };
-
-
-                recognition.onerror = (event) => {
-                    console.error('Speech recognition error', event);
-                };
-
-
-                recognition.onend = () => {
-                    console.log('Speech recognition service disconnected');
-                };
-            } else {
-                console.warn('Speech recognition not supported in this browser');
-                startRecordBtn.disabled = true;
-                startRecordBtn.textContent = 'Speech recognition not supported';
-            }
-        });
 
     </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const startRecordBtn = document.getElementById('start-record-btn');
+                const speechToText = document.getElementById('speech-to-text');
+
+
+                if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+                    recognition.lang = 'en-US';
+
+
+                    startRecordBtn.addEventListener('click', () => {
+                        recognition.start();
+                    });
+
+
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[0][0].transcript;
+                        speechToText.value = transcript;
+                    };
+
+
+                    recognition.onerror = (event) => {
+                        console.error('Speech recognition error', event);
+                    };
+
+
+                    recognition.onend = () => {
+                        console.log('Speech recognition service connected');
+                    };
+                } else {
+                    console.warn('Speech recognition not supported in this browser');
+                    startRecordBtn.disabled = true;
+                    startRecordBtn.textContent = 'Speech recognition not supported';
+                }
+            });
+
+        </script>
 
 </body>
 
